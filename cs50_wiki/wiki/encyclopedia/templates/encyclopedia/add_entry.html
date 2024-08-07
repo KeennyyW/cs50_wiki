@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+
+{% block title %}
+    {{ title }}
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+    </head>
+{% endblock %}
+    
+{% block body %}
+    <h1> add new entry </h1>
+    
+    <form method="post" action={% url "create" %}> 
+        {% csrf_token %}
+        <p>Enter the Title of your entry: </p>
+        <textarea id="textarea_title" name="textarea_title" rows="4" cols="50" placeholder="Enter Title"></textarea>
+
+        <br>
+
+        <p> Now enter the Content of your entry: </p>
+
+        <textarea id="textarea_content" name="textarea_content" rows="4" cols="50" placeholder="Enter Content"></textarea>
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    {{ title }}
+    <br>
+    {{ content }}
+{% endblock %}
